@@ -27,17 +27,20 @@ def generate_embeddings_from_pdfs():
     text = get_all_text()
     chunks = split_into_chunks(text)
     embeddings = create_bge_embeddings(chunks)
-    save_embeddings(embeddings)
+    save_embeddings(embeddings,chunks)
 
 
-def save_embeddings(embeddings):
+def save_embeddings(embeddings,chunks):
     file_path = "pkl/embeddings.pkl"
     directory = os.path.dirname(file_path)
     
     if not os.path.exists(directory):
         os.makedirs(directory)
         print(f'Directory {directory} created.')
-
+    data_to_save = {
+        'embeddings': embeddings,
+        'chunks': chunks
+    }
     with open(file_path, 'wb') as file:
-        pickle.dump(embeddings, file)
+        pickle.dump(data_to_save, file)
     print(f'Embeddings saved to {file_path}')
