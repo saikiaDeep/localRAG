@@ -17,5 +17,5 @@ def get_all_text():
     return result
 
 
-print(get_all_text())        
+     
         
