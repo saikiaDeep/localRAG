@@ -1,24 +1,11 @@
-
-from fastapi import FastAPI
-from pydantic import BaseModel
 import requests
-from helpers.pdf_downloader import download_from_storage
- 
-app = FastAPI()
 
- 
-@app.get("/")
-def read_root():
-    return "RAG pipeline"
-
-
-@app.get("/llm")
-def call_llm():
+def call_llm(prompt):
         
     url = "http://localhost:11434/api/generate"
     payload = {
         "model": "llama2",
-        "prompt": "Why is the sky blue?",
+        "prompt": prompt,
         "stream": False
     }
     headers = {
@@ -33,4 +20,3 @@ def call_llm():
     # data = response.json()
     # print(data.get('response'))
     return response.json()
-    
