@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, storage
 
 def download_from_storage():
-    cred = credentials.Certificate('../cred/cred.json')
+    cred = credentials.Certificate('cred/cred.json')
     firebase_admin.initialize_app(cred, {
         'storageBucket': 'nitsgms.appspot.com'
     })
@@ -11,7 +11,7 @@ def download_from_storage():
     bucket = storage.bucket()
     
     remote_folder = 'uploads/'  
-    local_folder = '../data'  
+    local_folder = 'data'  
    
     if not os.path.exists(local_folder):
         os.makedirs(local_folder)

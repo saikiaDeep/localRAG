@@ -10,7 +10,7 @@ def extract_text_from_pdf(pdf_file_path):
 
 def get_all_text():
     result = ""
-    pdf_files = glob.glob(os.path.join('..\data', '*.pdf'))
+    pdf_files = glob.glob(os.path.join('data', '*.pdf'))
     for pdf_file in pdf_files:
         text = extract_text_from_pdf(pdf_file)
         result += text
