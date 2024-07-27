@@ -15,7 +15,7 @@ def read_root():
 
 @app.post("/query")
 def retrieve_results(query:Query):
-    return str(query_engine.search(query.inp_query))
+    return query_engine.process_response(query.inp_query)
 
 
 

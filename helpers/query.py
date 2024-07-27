@@ -1,5 +1,6 @@
 from sklearn.metrics.pairwise import cosine_similarity
 from helpers.embeddings import create_bge_embeddings
+from helpers.llm import call_llm
 import os
 import pickle
 import numpy as np
@@ -30,7 +31,13 @@ class QueryEngine:
         return embeddings    
     def process_response(self,query):
         results = self.search(query)
-        
+        llm_obj={
+            "query": query,
+            "Context": results
+        }
+        return call_llm(str(llm_obj))
+
+
 
 
 
