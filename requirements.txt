@@ -1,3 +1,7 @@
 pymupdf
 fastapi
 requests
+firebase_admin
+torch
+transformers
+langchain_text_splitters
